@@ -52,13 +52,13 @@
                 
                 if (countdown <= 0) {
                     clearInterval(timer);
-                    let popupCountdown = 10;
+                    let popupCountdown = 3;
                     Swal.fire({
                         title: "跳转确认",
                         html: `即将在 <b>${popupCountdown}</b> 秒后自动跳转...`,
                         icon: "info",
                         showConfirmButton: false,
-                        timer: 10000,
+                        timer: 3000,
                         timerProgressBar: true,
                         didOpen: () => {
                             const popupTimer = setInterval(() => {
