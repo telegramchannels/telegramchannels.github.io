@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes"> 
+    <meta name="robots" content="noindex,follow">
+    <link rel="shortcut icon" href="/assets/images/favicon.png">
+    <title>加载中LOADING...</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css" />
+    <style>
+        /* 添加必要的CSS样式 */
+        .center-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            display: none; /* 隐藏整个center-box */
+        }
+        .loading-text {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        .countdown {
+            font-size: 24px;
+            color: #3085d6;
+            margin-top: 10px;
+        }
+        /* 可以根据需要添加更多样式 */
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
+</head>
+<body>
+    <div class='center-box'>
+        <p class="loading-text">正在准备跳转，请稍候</p>
+        <p class="countdown">0</p>
+    </div>
+
+<script type="text/javascript">
+    window.onload = function(){
+        const redirectUrl = sessionStorage.getItem('redirectUrl');
+        if(redirectUrl) {
+            let countdown = 1;
+            const countdownElement = document.querySelector('.countdown');
+            
+            // 倒计时函数
+            const timer = setInterval(function() {
+                countdown--;
+                countdownElement.textContent = countdown;
+                
+                if (countdown <= 0) {
+                    clearInterval(timer);
+                    let popupCountdown = 10;
+                    Swal.fire({
+                        title: "跳转确认",
+                        html: `即将在 <b>${popupCountdown}</b> 秒后自动跳转...`,
+                        icon: "info",
+                        showConfirmButton: false,
+                        timer: 10000,
+                        timerProgressBar: true,
+                        didOpen: () => {
+                            const popupTimer = setInterval(() => {
+                                popupCountdown--;
+                                Swal.getHtmlContainer().querySelector('b').textContent = popupCountdown;
+                                if (popupCountdown <= 0) {
+                                    clearInterval(popupTimer);
+                                    window.location.href = redirectUrl;
+                                }
+                            }, 1000);
+                        }
+                    });
+                }
+            }, 1000);
+        } else {
+            Swal.fire({
+                icon: "error",
+                title: "错误",
+                text: "跳转地址无效，3秒后返回首页"
+            });
+            setTimeout(function(){
+                window.location.href = "/";
+            }, 3000);
+        }
+        setTimeout(function(){
+            window.opener=null;
+            window.close();
+        }, 30000);
+    }
+</script>
+</body>
+</html>
