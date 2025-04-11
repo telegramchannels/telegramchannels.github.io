@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 添加点击事件
     floatingAd.addEventListener('click', function() {
-        window.open('https://t.me/trxxnbot', '_blank');
+        window.open('https://trx.tg10000.com', '_blank');
     });
 
     // 将广告添加到页面
