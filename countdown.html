@@ -15,7 +15,7 @@
 </script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes"> 
     <meta name="robots" content="noindex,follow">
     <link rel="shortcut icon" href="/assets/images/favicon.png">
     <title>加载中LOADING...</title>
@@ -51,7 +51,7 @@
             max-width: 300px;
         }
         .box__description-title {
-            font-size: 12px;
+            font-size: 18px;
             font-weight: bold;
             margin-bottom: 10px;
         }
@@ -91,12 +91,12 @@
         if(redirectUrl) {
             let countdown = 1;
             const countdownElement = document.querySelector('.countdown');
-
+            
             // 倒计时函数
             const timer = setInterval(function() {
                 countdown--;
                 countdownElement.textContent = countdown;
-
+                
                 if (countdown <= 0) {
                     clearInterval(timer);
                     let popupCountdown = 5;
@@ -112,8 +112,8 @@
                                 </div>
                                 <!-- 广告图片容器 -->
                                 <div style="text-align: center; margin: 10px 0;">
-                                    <a href="https://vpnnav.github.io/" target="_blank">
-                                        <img src="/assets/images/vpn.png" alt="广告"
+                                    <a href="https://jichangvpn.github.io/" target="_blank">
+                                        <img src="/assets/images/vpn.png" alt="广告" 
                                              style="width: 100%; max-width: 500px; height: 180px; object-fit: cover; border-radius: 8px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
                                     </a>
                                 </div>
@@ -126,8 +126,8 @@
                                         ✅全球多个地区的节点<br/>
                                         ✅有大流量不限时套餐
                                     </div>
-                                    <a href="https://vpnnav.github.io/"
-                                       target="_blank"
+                                    <a href="https://jichangvpn.github.io/" 
+                                       target="_blank" 
                                        style="display: inline-block; padding: 8px 25px; background: #3085d6; color: white; text-decoration: none; border-radius: 5px; transition: background 0.3s; font-size: 15px;">
                                         立即体验
                                     </a>
